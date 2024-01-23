@@ -57,5 +57,22 @@
     - Finding hidden patterns using data
     - Making large or complex data more accessible, understandable, and usable.
     - Power BI is turn unrelated sources of data into coherent, visually immersive, and interactive insights.
+### Microsoft Azure
+- Cloud computing is a way to rent compute power and storage from someone else's data center. When you're done using them you give them back your build only for what you use. Instead of maintanining CPUs and storage in your data center, you rent them for the time that you need them.
+- Provides computing services over the internet using a pay-as-you-go pricing model.
+- Azure runs business applications by providing global scale consistency and seamless integration, with on-premises environments.
+- Azure Marketplace that the place you can find, try, buy, and deploy the software and services you need to build new solutions and manage your cloud infrastructure.
+    - You can provision end-to-end solutions quickly and reliably, hosted in your own Azure environment.
+- Azure Services:
+    - Compute Services: virtual machines, serverless, containers.
+    - Cloud Storage: disks attached to virtual machines, vault shares or databases.
+    - Networking: set-up private network connections on-premises environments, and configure and control traffic into and out of Azure efficiently.
+    - App Hosting: run the entire web application on a managed platform in Windows or Linux.
+    - Artificial Intelligence: machine learning, prebuilt cognitive services.
+    - Internet of Things: integrate sensors and devices and manage them with IoT hubs.
+    - Integration: logic apps and services bus connect applications and services and allow for workflows to orchestrate business processes.
+    - Security: global security intelligence monitoring. 
+- List of [Azure Services](https://azure.microsoft.com/en-us/products)
 
+    
 ## Concepts of Relational and Non-relational Data
