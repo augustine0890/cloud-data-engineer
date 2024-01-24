@@ -60,6 +60,7 @@
 ### Microsoft Azure
 - Cloud computing is a way to rent compute power and storage from someone else's data center. When you're done using them you give them back your build only for what you use. Instead of maintanining CPUs and storage in your data center, you rent them for the time that you need them.
 - Provides computing services over the internet using a pay-as-you-go pricing model.
+    - In a consumption-based model, you don’t need to purchase and manage costly infrastructure that they may or may not use to its full capacity.
 - Azure runs business applications by providing global scale consistency and seamless integration, with on-premises environments.
 - Azure Marketplace that the place you can find, try, buy, and deploy the software and services you need to build new solutions and manage your cloud infrastructure.
     - You can provision end-to-end solutions quickly and reliably, hosted in your own Azure environment.
@@ -73,6 +74,23 @@
     - Integration: logic apps and services bus connect applications and services and allow for workflows to orchestrate business processes.
     - Security: global security intelligence monitoring. 
 - List of [Azure Services](https://azure.microsoft.com/en-us/products)
+### Cloud Computing Advantages
+- The benefits of cloud computing: high availability, scalability, elasticity, agility, geo-distribution, disaster recovery.
+    - With Agility, cloud-based resources can be deployed and configured quickly as your application requirements change.
+- With vertical scaling, computing capacity can be increased by additional RAM or CPUs to a virtual machine. You can scale vertically by adding additional virtual machines to your configuration.
+- With horizontal scaling, computing capicity can be increased by adding instances of resource.
+- Capital expenditure (CapEX) is the upfront spending of money on physical infrastructure and then deducting that upfront expense over time.
+- Operational expenditure (OpEX) is where you spend money on products or services and are build for them at the moment of use.
+- Lowers your operating costs that you don't have up-front costs.
+- Add resources that readily available, according to your needs.
+- Pay for additional resources when they are needed or stop paying for resources that are no longer needed.
 
-    
+- [Service Models in Azure](https://learn.microsoft.com/en-us/training/modules/align-requirements-in-azure/) <br>
+![Cloud Service Models](/assets/cloud_service_models.png)
+- The PaaS cloud service model is a managed hosting environment. In this model the cloud provider manages the vitural machines and networking resources. The cloud tenant deploys their applications into this managed hosting environment.
+- The IaaS is the cloud service model that is closest to managing physical servers. In this model the cloud provider keeps the hardware up to date but operating system maintenance and network configuration are left to the cloud tenant.
+
+- Serverless Computing enables developers to build applications faster by eliminating the need for them to manage infrastructure.
+- [Private, Public, and Hybrid clouds](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/)
+
 ## Concepts of Relational and Non-relational Data
