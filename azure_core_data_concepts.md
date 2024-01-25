@@ -94,3 +94,26 @@
 - [Private, Public, and Hybrid clouds](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/)
 
 ## Concepts of Relational and Non-relational Data
+### Relational Data
+- The main characteristics of relational databases:
+    - All data is tabular. Each instance of an entity is a row in the table, and each property is defined as a column.
+    - All row have the same set of columns
+    - A table can contain any number of rows.
+    - A primary key uniquely identifies each row in a table.
+    - A foreign key references rows in another related table.
+- Each row in a table contains the data for a single entity or record in that table.
+- The primary key indicates the column or combinatioin of columns, that uniquely identify each row.
+    - The primary key can be used to create relationships between tables.
+- A foreign key references rows in another, related table. For each value in the foreign key column, there should be a row with the same value in the corresponding primary key column in the other table.
+- A clustered index physically reorganizes a table by the index key.
+- Normalization: split an entity into more than one table.
+- Data modified infrequently: more indexes may improve query performance.
+- Data modified frequently: more indexes may affect performance.
+- If a table is queried infrequently, but subject to a large number of inserts, updates, and deletes (such as a table involved in OLTP), then creating indexes on that table can slow your system down.
+- An SQL view is a virtual table, while an index can improve the speed of data retrieval
+    - A view as a storage query --> immediate access to the relevant data.
+- Benefits of a cloud-based approach to DB Management Systems:
+    - Data can be backed up regularly
+    - Scaling up and scaling out can be handled in many cases with no or minimal downtime.
+    - Organisations only have to pay for the resources they use
+- Azure offers serveral PaaS solutions for relational databases: Azure SQL Database, Azure DB for PostgreSQL, AZ DB for MySQL, AZ DB for MariaDB.
