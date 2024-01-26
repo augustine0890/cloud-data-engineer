@@ -117,3 +117,37 @@
     - Scaling up and scaling out can be handled in many cases with no or minimal downtime.
     - Organisations only have to pay for the resources they use
 - Azure offers serveral PaaS solutions for relational databases: Azure SQL Database, Azure DB for PostgreSQL, AZ DB for MySQL, AZ DB for MariaDB.
+### Non-relational Data
+- Non-relational DB do not require a predefined schema. Data can be stored without a predefined schema.
+- Store the information for entities in collections or containers rather than relational tables.
+- Each entity only has the fields it needs, and these fields can vary between different entities.
+- Use cases:
+    - IoT & telematics: ingest large amounts of data, quick storage utilized by analytics services, real-time data processing.
+    - Retail & marketing: CosmosDB for Windows Store and Xbox Live --> used in the retail industry fro storage and process pipelines.
+    - Gaming: database tier crucial, cloud delivers customized and personalized user content, low latency for speed and greater user experience, capability to handle new game launches and feature updates.
+    - Web & mobile: Cosmos DB is well suited for modern requirements to deliver rich user experiences.
+- When date needs to be ingested very quickly or the query is unknown and unconstrained --> relational DB can be less suitable than a non-relational DB
+- Semi-structured data:
+    - It's not bound to a table or schema, but can be separated into hierarchies (application can parse and process)
+- Unstructured data:
+    - Data doesn't naturally contain fields.
+    - Audio, video, and other media streams.
+- NoSQL non-relational DB:
+    - Key-value stores: quickest type for inserting and querying data. Key uniquely identifies the item and value holds the data for the item. Azure Table storage, CosmosDB are key-value store.
+    - Document DBs: typically store data in JSON format, XML, YAML, and BSON, text.
+        - Does not require all documents have the same structure.
+        - Retrieve docs by document key --> unique identifier
+        - CosmosDB can only read and write entire documents, update replaces the entire document with a new versioin --> reduce fragmentation in DBs.
+        - Ingest large volumes of data
+    - Column family DBs:
+        - DB holds tabular data with rows and columns, but the columns are divided into groups known as column families.
+        - Read and write operations for a row are usually atomic with a single column-family.
+        - Apache Cassandra, AZ Cosmos DB.
+    - Graph databases:
+        - Stores two types of information, nodes and edges.
+        - Can efficiently perform queries across the network of nodes and edges and analyze the relationships between entities.
+        - Edges can have a direction indicating the nature of the relationship.
+        - Gremlin API: standard language for creating and querying in graphs
+- CosmosDB supports several common models of non-relational databases, include key-value stores, graph db, document db, and column-family stores. 
+- [Data store models](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview)
+- [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
