@@ -117,6 +117,7 @@
     - Scaling up and scaling out can be handled in many cases with no or minimal downtime.
     - Organisations only have to pay for the resources they use
 - Azure offers serveral PaaS solutions for relational databases: Azure SQL Database, Azure DB for PostgreSQL, AZ DB for MySQL, AZ DB for MariaDB.
+
 ### Non-relational Data
 - Non-relational DB do not require a predefined schema. Data can be stored without a predefined schema.
 - Store the information for entities in collections or containers rather than relational tables.
@@ -151,3 +152,16 @@
 - CosmosDB supports several common models of non-relational databases, include key-value stores, graph db, document db, and column-family stores. 
 - [Data store models](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview)
 - [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
+
+### Data Analytics
+- Successful companies make informed decisions to find new opportunities, identify weaknesses, increase efficiency, and improve customer satisfaction.
+- Data analytics is the process of examining raw data to uncover trends and discover information used to task and answer questions related to organizational performance. 
+- __Data Ingestion and Processing__
+    - Fresh and historical data from muiltiple sources.
+    - To capture the data and store in db system, set of files, type of fast. It might also perform filtering (reject suspicious, corrupt or duplicated data), transformation (covert to standard form).
+    - Processing: takes raw form data, cleans it and converts it into a more meaningful format such as tables (functions, cognitive services, databricks, tools).
+    - Build a data warehouse
+    - Wrangle data to appropriate formats
+    - ELT & ETL (Azure SQL Database): ELT (Data lake support, ideal for large volumes data), ETL (improved data privacy and compliance, does not require specialist skills)
+    - Azure Data Factory: data integration service that allows you to create data driven workflows for orchestrating data movement and transforming data at scale. Can create and schedule data driven workflows (ingest data from disparate data stores).
+    - Implement data analysis tools and visualizations
