@@ -125,17 +125,19 @@
 - Use cases:
     - IoT & telematics: ingest large amounts of data, quick storage utilized by analytics services, real-time data processing.
     - Retail & marketing: CosmosDB for Windows Store and Xbox Live --> used in the retail industry fro storage and process pipelines.
-    - Gaming: database tier crucial, cloud delivers customized and personalized user content, low latency for speed and greater user experience, capability to handle new game launches and feature updates.
-    - Web & mobile: Cosmos DB is well suited for modern requirements to deliver rich user experiences.
+    - Gaming: database tier crucial, cloud delivers customized and personalized user content, low latency for speed and greater user experience, capability to handle new game launches and feature updates (in-game stats, and high-score leaderboards).
+    - Web & mobile: Cosmos DB is well suited for modern requirements to deliver rich user experiences (modeling social interactions, integrating with third-party services, and rich personalized experiences).
 - When date needs to be ingested very quickly or the query is unknown and unconstrained --> relational DB can be less suitable than a non-relational DB
 - Semi-structured data:
     - It's not bound to a table or schema, but can be separated into hierarchies (application can parse and process)
+    - Contains fields, only define the fields that needed on a per-entity basis.
 - Unstructured data:
     - Data doesn't naturally contain fields.
     - Audio, video, and other media streams.
 - NoSQL non-relational DB:
     - Key-value stores: quickest type for inserting and querying data. Key uniquely identifies the item and value holds the data for the item. Azure Table storage, CosmosDB are key-value store.
     - Document DBs: typically store data in JSON format, XML, YAML, and BSON, text.
+        - Contains the entire data for an entity.
         - Does not require all documents have the same structure.
         - Retrieve docs by document key --> unique identifier
         - CosmosDB can only read and write entire documents, update replaces the entire document with a new versioin --> reduce fragmentation in DBs.
@@ -161,7 +163,21 @@
     - To capture the data and store in db system, set of files, type of fast. It might also perform filtering (reject suspicious, corrupt or duplicated data), transformation (covert to standard form).
     - Processing: takes raw form data, cleans it and converts it into a more meaningful format such as tables (functions, cognitive services, databricks, tools).
     - Build a data warehouse
-    - Wrangle data to appropriate formats
+    - Wrangle data to appropriate formats. Wrangling is the process by which you transform and map raw data into a more useful format for analysis. It can involve writing code to capture, filter, clean, combine, and aggregate data from many sources.
     - ELT & ETL (Azure SQL Database): ELT (Data lake support, ideal for large volumes data), ETL (improved data privacy and compliance, does not require specialist skills)
     - Azure Data Factory: data integration service that allows you to create data driven workflows for orchestrating data movement and transforming data at scale. Can create and schedule data driven workflows (ingest data from disparate data stores).
     - Implement data analysis tools and visualizations
+- __Data Visualization__
+    - The graphical representation of information and data by using visual elements like charts, graphs and maps.
+    - Provide an accessible way to spot and understand trends, outliers, and patterns in data.
+    - Business Intelligence (BI) refers to technologies, applications, and practices for the collection, integration, analysis, and presentation of business information. The purpose of business intelliigence is to support better decision-making.
+    - The most common forms: bar, column, line, matrix, key influencers, treemaps, scatter, dotplot and filled map.
+    - Matrix charts display summative tabular data to be used in reports and dashboards.
+    - A filled map to display how a value differs in proportion across a geography or region (geographical data).
+    - A key influencers chart displays the major contributors to a selected result or value. Key influencers are a great choice to help understand the factors that influence a key metric.
+        - For example, what influences customers to place a second order or why sales were so high last June.
+- __Data Analytics__
+    - Examining, transforming, and arranging data --> study and extract useful information.
+    - Descriptive, diagnostic, predictive, prescriptive, and cognitive analytics.
+    - Descriptive analytics helps answer questions about what has happened, based on historical data. DA techniques summarize large datasets.
+    - Diagnostic analytics helps answer questions about why things happened.
