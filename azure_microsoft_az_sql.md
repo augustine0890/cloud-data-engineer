@@ -5,19 +5,36 @@
 - Azure relational data services: manages the DBMS for you
 - A virtual network enables to connect virtual machines in Azure services together. It's isolated from other virtual networks created by other users and from the internet.
 - IaaS enables to create a virtual infrastructure in the cloud that mirrors the way an on-premises data center might work.
+- Hosting SQL Server on Virtual Machines is an example of the IaaS cloud model.
+- With SQL Server running on a VM, the tenant is responsible for Software installation and maintenance as well as backing up.
+- SQL Server running on an Azure virtual machine effectively replicates the database running on real on-premises hardware. Migrating from the system running on-premises to an Azure virtual machine is no different than moving the databases from one on-premises server to another.
 - Azure Data Services fall into the PaaS category. These services are a series of DBMSs managed bu Microsoft in the Cloud.
+- A hybird deployment is a system where part of the operation runs on-premises, and part in the cloud (some database elements might be hosted in the cloud)
 - The PaaS solution requires the lowest administrative effort and capital expenditure.
+- For migrations and applications requiring access to operating system, there are features that might not be supported at the PaaS level. SQL virtual machines are lift and shift ready for existing applications that require fast migration to the cloud with minimal changes.
 - __Microsoft SQL Server__
     - Shift operations to the cloud to take advantage of cloud services.
     - Migrating from the system running on premises to an Azure virtual machine is no different than moving the databases from one on premises server to another.
 - __Azure SQL Database__
     - Single database: quickly set up and run a single SQL Server database. Microsoft ensures the privacy of DB. The DB automatically scales and resources are allocated or de-allocated as required.
+        - Predictable and stable workloads
     - Elastic pool: multiple databases can share the same resources (memory, data storage space, and processing power). This model is useful if you have DBs with resource requirements that vary over time and can help you to reduce costs.
-    - Managed instance
+        - Shared resource model for greater efficiency through multi tendency
+    - Managed instance: multiple databases on same instance, automates backups, patching and monitoring, full security and resource allocation control.
+        - High compatibility
+        - All communications are encrypted and signed using certificates. To check trustworthiness of communicating parties, managed instance constantly verify these certificates through certificate revocation lists. If the certificates are revoked, the managed instance closes the connections to protect the data.
+    - Single Database and Elastic Pool options restrict some of administrative features available to SQL Server. Managed instance effectively runs a fully controllable instance of SQL Server in cloud.
 - Modern cloud applications that require latest features.
 - Applications that require high availability.
 - Systems with a variable load for scalability.
-
+- Not all features of a database management system are available in AZ Services. Azure Data Services takes on the task of managing the system and keeping it running using hardware situated in an Azure datacenter.
+- __PostgreSQL, MariaDB, and MySQL (PaaS)__
+    - Azure Database for MariaDB High availability. Easy scaling that responds quickly to demand. Secure data, both at rest and in motion. Automatic backups and point-in-time restore for the last 35 days.
+    - Azure DB for PostgreSQL can store both relational and non-relational data.
+    - The single-server deployment option for PostgreSQL provides similar benefits as Azure Database for MySQL. You choose from three pricing tiers: Basic, General Purpose, and Memory Optimized. Each tier supports different numbers of CPUs, memory, and storage sizes—you select one based on the load you expect to support.
+    - Azure PostgreSQL Hyperscale (Citus) is a deployment option that scales queries across multiple server nodes to support large database loads. Your database is split across nodes.
+- [What is Azure SQL](https://learn.microsoft.com/en-us/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?view=azuresql)
+- [Data Migration Assistant](https://learn.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-ver16)
 
 ## Provisioning, Deploying, and Querying Relational Data in Microsoft Azure
 - Compare Data Definition Language (DDL) versus Data Manipulation Language (DML)
