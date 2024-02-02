@@ -37,4 +37,21 @@
 - [Data Migration Assistant](https://learn.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-ver16)
 
 ## Provisioning, Deploying, and Querying Relational Data in Microsoft Azure
-- Compare Data Definition Language (DDL) versus Data Manipulation Language (DML)
+- Compare Data Definition Language (DDL) versus Data Manipulation Language (DML).
+- Provisioning is the act of running a series of taks to create, configure, and make available a service:
+    - Set up disks, memory, CPUs network --> Estimating the size of the workload that you intend to run using the service.
+    - Tools for provisioning: AZ portal, AZ CLI, PowerShell, Resource Manager templates (JSON).
+    - AZ PostgreSQL: provides hyperscale deployment option supports horizontal scaling across multiple machine. Query parallelization across servers. Multi-tenant applications, real time operational analytics, and high throughput transactional workloads.
+- Configure relational data services:
+    - The default connectivity for AZ DBs is to disable access to the world.
+    - AZ virtual network is a representation of your own network in the cloud.
+    - AZ private endpoint is a network interface that connects you privately and securely to a service powered by AZ Private Link (private IP address).
+    - With Azure Active Directory authentication, you can centrally manage the identities of database users and other Microsoft services in one central location.
+    -  A role definition, often abbreviated to role, is a collection of permissions. A role definition lists the operations that can be performed, such as read, write, and delete.
+        - Owner: who has full access to all resources, including the right to delegate access to others.
+        - Contributor: can create and manage all types of AZ resource, but can't grant access to others.
+        - Reader: who can view existing Microsoft Azure resources.
+        - User access administrator, which lets you manage user access to Microsoft Azure resources.
+    - Intelligence monitors the service and detects unusual patterns of activity that could be harmful or compromise the data managed by the service.
+    - Assessment identifies potential security vulnerabilities and recommends actions to mitigate them.
+- Explore basic connectivity issues
