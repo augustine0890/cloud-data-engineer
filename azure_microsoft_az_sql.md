@@ -38,10 +38,17 @@
 
 ## Provisioning, Deploying, and Querying Relational Data in Microsoft Azure
 - Compare Data Definition Language (DDL) versus Data Manipulation Language (DML).
+    - Drop is a DDL statement. DDL statements are used to create, modify, and remove tables and other objects in a database
+    - Alter is a DDL statement.
 - Provisioning is the act of running a series of taks to create, configure, and make available a service:
     - Set up disks, memory, CPUs network --> Estimating the size of the workload that you intend to run using the service.
     - Tools for provisioning: AZ portal, AZ CLI, PowerShell, Resource Manager templates (JSON).
     - AZ PostgreSQL: provides hyperscale deployment option supports horizontal scaling across multiple machine. Query parallelization across servers. Multi-tenant applications, real time operational analytics, and high throughput transactional workloads.
+    - When connecting to a database from within another Azure service (web app), your connections by default have a connection policy of Redirect:
+        - After establishing a connection through a gateway all subsequent request go directly to the database.
+        - When connecting to a database from within another Azure service a policy of Redirect means that after your application establishes a connection to the Azure SQL database through a gateway all subsequent requests from your application will go directly to the database rather than through the gateway.
+    - DoSGuard actively tracks failed logins from IP addresses. If there are multiple failed logins from a specific IP address within a period of time, the IP address is blocked from accessing any resources in the service for a short while.
+    - DoSGuard encrypts all communications between a client and the database servers.
 - Configure relational data services:
     - The default connectivity for AZ DBs is to disable access to the world.
     - AZ virtual network is a representation of your own network in the cloud.
@@ -54,4 +61,12 @@
         - User access administrator, which lets you manage user access to Microsoft Azure resources.
     - Intelligence monitors the service and detects unusual patterns of activity that could be harmful or compromise the data managed by the service.
     - Assessment identifies potential security vulnerabilities and recommends actions to mitigate them.
+    - Can replicate data fro the Azure DBs for PostgreSQL server to read only server. PostgreSQL supports replication from the master server up to five replicas.
+- Azure role-based access control (Azure RBAC) using role assignments helps you manage who has access to your Azure resources and what they can do with those resources:
+    - A role assignment consists of three elements: a security principal, a role definition, and a scope.
+- Azure SQL DB uses a clustered topology to provide high availability. Each server and database is transparently replicated to ensure that a server is always accessible, even in the event of a database or server failure.
 - Explore basic connectivity issues
+- [Exercise - Provision Azure relational database services](https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/4-exercise-provision-relational-azure-data-services)
+
+- For access to Azure SQL you can set the Authorization type to SQL Server authentication or Active Directory password authentication.
+- Apart from authentication and authorization, many services provide additional protection through advanced data security. Advanced data security implements threat protection and assessment. 
