@@ -18,15 +18,34 @@
 - Kinesis Data Firehose to deliver log files to S3 with the least operational overhead.
   - Can use a data-transformation Lambda function with Kinesis Data Firehose --> can convert log files to the correct format before the log files are delivered to S3
 
+## AWS Lake Formation
+- Helps centrally govern, secure, and globally share data for analytics and machine learning
+- Can manage fine-grained access control for your data lake on Amazon S3 and its metadate in AWS Glue Data Catalog
+- You can use Lake Formation to implement security at the database, table, column, row, and cell levels.
+  - To implement security at these levels, you can create data filters --> this solution would be reliable and scalable (ensure apply the correct permissions)
+
+
 ## Amazon S3
 - The S3 Infrequent Access storage class will ensure that data is cost effectively made available for occasional analysis by using SQL with Athena.
   - A lifecycle rule that migrates data to the S3 Glacier Flexible Retrieval storage class will ensure that data is available for compliance evaluation with 12 hours. Configure the lifecycle rule to delete the data after 10 years.
+  - S3 Glacier Flexible Retrival: archives where portions of the data might need to be retrieved in minutes
+- S3 Glacier Instant Retrieval: archiving data that is rarely accessed and requires milliseconds retrieval.
+- S3 Glacier Deep Archive: archiving data that rarely needs to be accessed. Data stored has a minimum storage duration period of 180 days and a default retrieval time of 12 hours.
+
+
+## AWS Lambda
+- Lambda provides runtimes for Python that run your code to process events.
+  - Your code runs in an environment that includes the SDK for Python to access various AWS services, including S3 buckets.
 
 ## Redshift
 - Redshift data sharing gives you the ability to share live data across Redshift clusters and Redshift Serverless endpoints at no additional cost.
 - Redshift Serverless automatically provisions and scales data warehouse capacity to run the test workloads. You pay only for the compute capacity provisioned. There are no compute costs when no workloads are running.
 - Redshift materialized views to speed up queries that are predictable and repeated.
   - Runs SQL REFRESH on the materialized view would ensure that the latest data from the current sales table is included in the report.
+- Redshift Spectrum resides on dedicated AWS Redshift servers that are independent of your cluster.
+  - It pushes many compute-intensive tasks --> predicate filtering and aggregation, down to the Redshift Spectrum layer.
+  - It can access and query S3 data from AWS Redshift. (Do not need to keep data over 3 months old in Redshift. Instead, you can unload the data to S3, then use Spectrum for the yearly analysis. S3 Glacier Deep Archive provides the most cost-effective option for long-term data storage)
+
 
 ## Amazon Glue
 - AWS Glue DataBrew is a visual data preparation tool that gives you the ability to clean and normalize data without the need to write code. DataBrew provides data masking mechanisms to obfuscate PII data during the data preparation process.
@@ -59,6 +78,13 @@
 ## Amazon Elastic File System (EFS)
 - AWS EFS is a scalable file storage service that you can integrate with Lambda or other compute options.
   - Lambda can access the data by using NFS. Additionally, the data is accessible from all concurrently running Lambda functions.
+
+##  Amazon EventBridge Scheduler
+- A serverless scheduler that allows you to create, run, and manage tasks from one central, managed service.
+
+## AWS Secrets Manager
+- Manage, retrieve, and rotate database credentials, application credentials, OAuth tokens, API keys, and other secrets throughout their lifecycles.
+- Rotation is the process of periodically updating a secret. When you rotate a secret, you update the credentials in both the secret and the database or service.
 
 ## Some AWS Services and Features
 - AWS Identity and Access Management (IAM)
