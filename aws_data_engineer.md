@@ -31,23 +31,34 @@
   - S3 Glacier Flexible Retrival: archives where portions of the data might need to be retrieved in minutes
 - S3 Glacier Instant Retrieval: archiving data that is rarely accessed and requires milliseconds retrieval.
 - S3 Glacier Deep Archive: archiving data that rarely needs to be accessed. Data stored has a minimum storage duration period of 180 days and a default retrieval time of 12 hours.
-
+- S3 Select: allows retrieval of only a subset of data from an object, using simple SQL expressions. S3 Select improves the performance of applications by retreving only the needed data from an S3 object.
 
 ## AWS Lambda
 - Lambda provides runtimes for Python that run your code to process events.
   - Your code runs in an environment that includes the SDK for Python to access various AWS services, including S3 buckets.
 
 ## Redshift
+- Fully managed, petabyte-scale data warehouse service in the cloud, allowing users to analyze data using standard SQL and existing BI tools.
+- Data Distribution Styles:
+  - Even Distribution: Distributes tables rows evenly across all slices and nodes.
+  - Key Distribution: Distributes rows based on the values of the specified column.
+  - All Distribution: Copies the entire table to every node, beneficial for smaller dimension tables.
 - Redshift data sharing gives you the ability to share live data across Redshift clusters and Redshift Serverless endpoints at no additional cost.
 - Redshift Serverless automatically provisions and scales data warehouse capacity to run the test workloads. You pay only for the compute capacity provisioned. There are no compute costs when no workloads are running.
 - Redshift materialized views to speed up queries that are predictable and repeated.
   - Runs SQL REFRESH on the materialized view would ensure that the latest data from the current sales table is included in the report.
+- Redshift's Query Optimizer can utilize the materialized views to deliver faster query performance since data has already been aggregated and stored. Particularly effective for repetitive and predictable query patterns, as it saves the cost of re-running the same join operations with each query.
 - Redshift Spectrum resides on dedicated AWS Redshift servers that are independent of your cluster.
   - It pushes many compute-intensive tasks --> predicate filtering and aggregation, down to the Redshift Spectrum layer.
-  - It can access and query S3 data from AWS Redshift. (Do not need to keep data over 3 months old in Redshift. Instead, you can unload the data to S3, then use Spectrum for the yearly analysis. S3 Glacier Deep Archive provides the most cost-effective option for long-term data storage)
-
-
+  - It can access and query S3 data from AWS Redshift. (Do not need to keep data over 3 months old in Redshift. Instead, you can unload the data to S3, then use Spectrum for the yearly analysis. S3 Glacier Deep Archive provides the most cost-effective option for long-term data storage). This enables them to perform analysis across their entire datasets (both historical in S3 an real-time in Redshift) using standard SQL
+- VACUUM Command: used to reclaim space and resort rows in tables where data has been updated and deleted, optimizing storage efficiency and query performance.
+  - In Redshift, when rows are deleted or updated, the old versions of rows are logically marked for deletion but not physically removed. Over time, this can lead to inefficient use of disk space and can degrade query performance. 
 ## Amazon Glue
+- AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy to prepare and load data analytics.
+- Glue Data Catalog: acts as a centralized metadata repository for all your data assets, regardless of where they are stored. It integrates with Athena, Redshift Spectrum, and Lake Formation.
+  - It offers the capability to automatically detect and reflect schema changes.
+  - Glue Crawlers can be used to update the schema in the Data Catalog. This updated schema is then automatically available to Athena.
+  - Single source of truth for metadata and schema information, facilitating efficient data management and query execution in a dynamic data environment.
 - AWS Glue DataBrew is a visual data preparation tool that gives you the ability to clean and normalize data without the need to write code. DataBrew provides data masking mechanisms to obfuscate PII data during the data preparation process.
 - You need to grant your IAM role permissions that AWS Glue can assume when calling other services on your behalf.
   - Includes access S3 for any sources, targets, scripts, and temporary directories that you use with AWS Glue.
@@ -66,8 +77,16 @@
 
 
 ## Amazon AppFlow
-- AWS AppFlow, a flow transfer data between a source and a destination. Amazon AppFlow supports many AWS services and SaaS applications as sources or destinations. A solution that use Amazon AppFlow can continuously send data from the SaaS application to Redshift with least operational overhead. 
+- AWS AppFlow, a flow transfer data between a source and a destination. Amazon AppFlow supports many AWS services and SaaS applications as sources or destinations. A solution that use Amazon AppFlow can continuously send data from the SaaS application to Redshift with the least operational overhead. 
+- Ideal for migrating data to AWS, consolidating data from multiple sources for analytics, and keeping SaaS application data synchronized with AWS services
 
+
+## Amazon Data Exchange
+- A service that helps AWS easily share and manage data entitlements from other organizations at scale.
+- As a data receiver: you can track and manage all of your data grants and AWS Marketplace data subscriptions in one place.
+  - Access third-party data for market research, financial analysis, or customer insights.
+- As data senders: eliminates the need to build and maintain any data delivery and entitlement infrastructure.
+  - Share your own data (e.g., anonymized customer data) with partners for collaborative analytics.
 
 ## Amazon Macie
 - Data security service that discovers sensitive data by using machine learning and pattern matching, provides visibility into data security risks, and enables automated protection against those risks.
@@ -78,6 +97,11 @@
 ## Amazon Elastic File System (EFS)
 - AWS EFS is a scalable file storage service that you can integrate with Lambda or other compute options.
   - Lambda can access the data by using NFS. Additionally, the data is accessible from all concurrently running Lambda functions.
+
+## Amazon Elastic Block Store (EBS)
+- Provides block-level storage volumes for use with Amazon EC2 instances. EBS volumes are highly available and reliable storage volumes that can be attached to any running instance in the same Availability Zone
+- Volume Types: General Purpose (SSD), Provisioned IOPS (SSD), and Magnetic.
+- EBS allows to change the volume type of existing volumes with no downtime using the AWS Management Console or the AWS Command Line Interface.
 
 ##  Amazon EventBridge Scheduler
 - A serverless scheduler that allows you to create, run, and manage tasks from one central, managed service.
