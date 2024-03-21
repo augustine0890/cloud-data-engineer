@@ -31,7 +31,9 @@
   - S3 Glacier Flexible Retrival: archives where portions of the data might need to be retrieved in minutes
 - S3 Glacier Instant Retrieval: archiving data that is rarely accessed and requires milliseconds retrieval.
 - S3 Glacier Deep Archive: archiving data that rarely needs to be accessed. Data stored has a minimum storage duration period of 180 days and a default retrieval time of 12 hours.
-- S3 Select: allows retrieval of only a subset of data from an object, using simple SQL expressions. S3 Select improves the performance of applications by retreving only the needed data from an S3 object.
+- S3 Select: allows retrieval of only a subset of data from an object, using simple SQL expressions. S3 Select improves the performance of applications by retrieving only the needed data from an S3 object.
+- Convert the data in S3 to Parquet can reduce the number of bytes that Athena needs to read, which can significantly impact the performance of queries, especially those that do not need to scan entire tables.
+
 
 ## AWS Lambda
 - Lambda provides runtimes for Python that run your code to process events.
@@ -53,17 +55,35 @@
   - It can access and query S3 data from AWS Redshift. (Do not need to keep data over 3 months old in Redshift. Instead, you can unload the data to S3, then use Spectrum for the yearly analysis. S3 Glacier Deep Archive provides the most cost-effective option for long-term data storage). This enables them to perform analysis across their entire datasets (both historical in S3 an real-time in Redshift) using standard SQL
 - VACUUM Command: used to reclaim space and resort rows in tables where data has been updated and deleted, optimizing storage efficiency and query performance.
   - In Redshift, when rows are deleted or updated, the old versions of rows are logically marked for deletion but not physically removed. Over time, this can lead to inefficient use of disk space and can degrade query performance. 
+- Redshift Data API: enables running SQL queries on data in Redshift asynchronously and retrieving the results through a simple API call (without the need to manage database connections), useful for integrating with web services and AWS Lambda.
+
 ## Amazon Glue
 - AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy to prepare and load data analytics.
-- Glue Data Catalog: acts as a centralized metadata repository for all your data assets, regardless of where they are stored. It integrates with Athena, Redshift Spectrum, and Lake Formation.
+  - Glue is serverless as you only pay for the compute resources consumed while the jobs are running.
+- Glue Data Catalog: acts as a centralized metadata repository for all your data assets, regardless of where they are stored. It integrates with Athena, EMR, Redshift Spectrum, and Lake Formation.
+  - It provides a persistent metadata store for storing tables definitions, schemas, and other properties.
   - It offers the capability to automatically detect and reflect schema changes.
   - Glue Crawlers can be used to update the schema in the Data Catalog. This updated schema is then automatically available to Athena.
   - Single source of truth for metadata and schema information, facilitating efficient data management and query execution in a dynamic data environment.
+  - Provides metadata store that is integrated with AWS EMR, serving as a fully managed Hive metastore compatible with Apache Hive
 - AWS Glue DataBrew is a visual data preparation tool that gives you the ability to clean and normalize data without the need to write code. DataBrew provides data masking mechanisms to obfuscate PII data during the data preparation process.
 - You need to grant your IAM role permissions that AWS Glue can assume when calling other services on your behalf.
   - Includes access S3 for any sources, targets, scripts, and temporary directories that you use with AWS Glue.
   - Permission is needed by crawlers, jobs, and development endpoint.
 - You can use the job run monitoring section of the AWS Glue console to determine the appropriate DPU capacity for this scenario. The job monitoring section of the AWS Glue console use the result of previous job runs to determine the appropriate DPU capacity.
+- ETL Jobs: allows to author and orchestrate ETL jobs. These jobs can be triggered on a schedule or in response ot event.
+  - Can also set up triggers to call a Lambda function before or after a Glue job runs --> low-management overhead solution for orchestrating tasks that involve both Lambda functions and Glue jobs, as it relies on Glue's native scheduling and dependency resolution features.
+- FLEX execution: cost-optimization option for non-critical ETL workloads like:
+  - Pre-production data processing
+  - Data cleansing and validation for testing purposes.
+  - One-time data loads
+
+
+## Amazon Athena
+- An interactive query service that makes it easy to analyze data in S3 using standard SQL. Athena is serverless --> no infrastructure to manage --> pay only for the queries you run
+  - Directly works with data stored in S3. It's commonly used for querying log files, click stream data, and other unstructured, semi-structured data.
+- Athena's partition projection can help manage many partitions by projecting them into the query results as if they were there, without the need to perform operations on the actual metadata in the Glue Data Catalog --> speeds up query execution time because Athena spends less time reading the partition metadata.
+
 
 ## Amazon SageMaker
 - SageMaker ML Lineage Tracking creates and stores information about the steps of an ML workflow.
@@ -87,6 +107,11 @@
   - Access third-party data for market research, financial analysis, or customer insights.
 - As data senders: eliminates the need to build and maintain any data delivery and entitlement infrastructure.
   - Share your own data (e.g., anonymized customer data) with partners for collaborative analytics.
+
+## Amazon DataSync
+- Data transfer service that simplifies, automates, and accelerates moving data between on-premises storage systems and AWS storage services, as well as between storage services.
+  - It provides the ability to schedule periodic or one-time sync tasks, handles incremental changes to keep data in sync, and can be used both initial migrations and ongoing replication tasks.
+  - The scheduling feature ensures that data is kept up to date after the initial migration with minimal manual intervention, which aligns with the team's requirements for regular, ongoing data transfers.
 
 ## Amazon Macie
 - Data security service that discovers sensitive data by using machine learning and pattern matching, provides visibility into data security risks, and enables automated protection against those risks.
