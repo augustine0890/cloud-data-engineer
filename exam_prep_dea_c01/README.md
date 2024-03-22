@@ -17,8 +17,35 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
   - [Architecture Best Practices for Analytics & Big Data](https://aws.amazon.com/architecture/analytics-big-data/)
   - [Big Data Analytics Options on AWS](https://docs.aws.amazon.com/pdfs/whitepapers/latest/big-data-analytics-options/big-data-analytics-options.pdf)
 
-
 ## Domain 1: Data Ingestion and Transformation
+1.1 Perform data ingestion
+- Data ingestion: moving data from one place to another
+- Data integration: combines data from different sources
+- Data ingestion pipelines:
+  - Re-process: S3, Kinesis, EventBridge
+  - Idempotent
+  - Checkpoints
+  - Versioning
+  - Logging and monitoring
+- Producers: DBs, Data stream, Client, Users, Mobile client --> S3 --> Consumers: EC2 instance, RDS, Lambda function
+- Transactional data: DynamoDB, RDS, AWS Database Migration Service (DMS)
+- Streaming data: Amazon Kinesis Data Firehouse, Data Streams, Video Steams, Data Analytics
+  - Amazon Managed Service for Apache Flink (Data Analytics)
+- **Kinesis Data Streams**:
+  - Each stream is composed of one or more shards that provide a specific amount of capacity. As your workload grows, an application might read or write to a shard at a rate that exceeds its capacity.
+  - A partition key strategy can help to take advantage of the provision capacity of Kinesis and avoid hot shards. It's important to monitor you stream metrics and set alarm thresholds to ensure that you have the visibility for your scaling decisions.
+  - Solutions:
+    - Use `UpdateShardCount` action to scale the stream and increase the number of shards.
+    - Use random partition keys to adjust as needed and to distribute the hash key space evenly across shards.
+- Amazon MSK: can replace an existing Apache Kafka cluster. Kinesis may be a better option for a new solution because Kinesis is serverless and you only pay for the data throughput. With MSK, you have to pay for the cluster whether you're sending data through it or not.
+- Amazon AppFlow: use to ingest data from software as a service and transform and write the data to Amazon S3, Redshift, or write to other SaaS services.
+- AWS Transfer Family: file transfer protocol, FTP, and secure file transfer protocol, SFTP directly into Amazon S3 using common file transfer protocols.
+- AWS DataSync: data transfer service that simplifies, automates, and accelerates moving data between on-premises storage systems and AWS storage services, as well as between AWS storage services. It also uses common protocols such as NFS and Server Message Block, or SMB.
+- AWS Snow Family: extend AWS infrastructure and services into the edge, helping customers run low-latency applications close to where originates, is processed, acted upon.
+  - Edge compute operations using Snow devices in locations with denied, disconnected, intermittent, or limited network connectivity to AWS.
+  - AWS Snowball Edge and AWS Snowcone as an IoT Hub, to run data analytics, to run image analytics and video analytics for content generated at the edge, or to run AI/ML inference at the edge.
+
+
 ## Domain 2: Data Store Management
 ## Domain 3: Data Operations and Support
 ## Domain 4: Data Security and Governance
