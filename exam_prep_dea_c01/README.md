@@ -53,6 +53,54 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
   - Stateful: Amazon ElastiCache, RDS
   - Stateless: Lambda, API Gateway, S3
 
+1.2 Transform and process data
+- Query: SQL query issued -- Parsing and conversion to bytecode -- Query planning and optimization -- Query execution -- Results returned
+- Data modeling:
+  - Online transaction processing (OLTP):
+    - Latest state of data
+    - Normalization and 3rd normal
+    - Optimize for point queries
+    - Query latency matters
+    - Common Table Expressions (CTEs) can cause latency
+  - Online analytical processing (OLAP):
+    - Latest state and historical data
+    - Normalization can cause slowness
+    - Latency not is important
+    - Optimize for GROUP BY
+    - Use CTEs instead of sub queries
+- Transformations: adds unification, integration, add enhancements, which increases value and adds scalability, reliability, and cost optimization.
+  - Map data to the correct types
+  - Put records in standard format
+  - Remove bad data
+  - Change the data schema
+  - Apply normalization
+  - Apply large-scale aggregation
+- Raw data is rarely useful: calculated fields, filters, field names, and data types.
+- AWS EMR: full-featured, distributed Hadoop environment. Additional frameworks and software
+- AWS Glue: fully managed extract, transform, and load (ETL) service. Data cleansing, enrichment, and movement.
+- Transformation scenario:
+  - Code (Python, Java, Scala) --> Spark App --> EMR --> Config files --> (S3 bucket, Redshift, RDS)
+  - IoT Data --> Kinesis Data Firehose --> S3 --> Lambda function
+  - EC2 Instance (send the data to firehose) --> Kinesis Data Firehose --> S3 <-- AWS Glue
+                       &emsp; &emsp; <br> |--> Amazon Managed for Apache Flink (streaming data analytics) --> Kinesis Firehose --> OpenSearch --> Observability
+  - Clothing company stores all historical transactions in an S3 bucket that is integrated with Data Catalog to join the historical transactions with the sales report data:
+    - The processing of the data is completed in an Amazon Redshift cluster <-- solution to reduce the workload of the Redshift cluster.
+    - Use Redshift SQL to join the tables and Redshift Spectrum to create an external for the historical transaction data in S3.
+- Troubleshooting and performance optimization:
+  - Identify the following: bottlenecks, high-processing times, memory usage, or higher I/O operations. Algorithms, partition strategy, or parallel processing is needed. Resource allocation. Caching is needed.
+  - Check logs, verify data, implement incremental processing, add retries, test.
+- AWS Data Services:
+  - Glue, EMR: data processing or transformation, cleanse, normalize, and transform the data into a usable format.
+  - API Gateway: provides authentication, authorization, rate limiting, caching, and request and response transformation.
+  - Lambda: used to process and serve the data for your API.
+    - Can write the code to fetch data from data source, apply any additional transformations, and respond to API requests with the formatted data.
+    - Can be triggered by API Gateway or other AWS services.
+  - Identity and Access Management (IAM): control access and permissions for API Gateway and Lambda functions.
+  - AWS Certificate Manage, API keys, OAuth: to secure API endpoints.
+  - API Gateway, or ElastiCache: cache responses and reduce latency.
+  - AWS CloudWatch: monitor and track the performance, latency, and usage of your data API, configure logging to capture API requests, logs, and errors for troubleshooting and analysis.
+  - CodePipeline and CodeBuild: continuous integration and deployment to automate the testing and deployment process.
+
 
 ## Domain 2: Data Store Management
 ## Domain 3: Data Operations and Support
