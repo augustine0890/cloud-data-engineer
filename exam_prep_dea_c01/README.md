@@ -42,8 +42,16 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
 - AWS Transfer Family: file transfer protocol, FTP, and secure file transfer protocol, SFTP directly into Amazon S3 using common file transfer protocols.
 - AWS DataSync: data transfer service that simplifies, automates, and accelerates moving data between on-premises storage systems and AWS storage services, as well as between AWS storage services. It also uses common protocols such as NFS and Server Message Block, or SMB.
 - AWS Snow Family: extend AWS infrastructure and services into the edge, helping customers run low-latency applications close to where originates, is processed, acted upon.
+  - Ingest the large amounts of data
   - Edge compute operations using Snow devices in locations with denied, disconnected, intermittent, or limited network connectivity to AWS.
   - AWS Snowball Edge and AWS Snowcone as an IoT Hub, to run data analytics, to run image analytics and video analytics for content generated at the edge, or to run AI/ML inference at the edge.
+- **Batch Data Ingestion**
+  - Deal with a larger event payloads and ingesting those on an hourly, daily, or weekly basic using a scheduled job such as a CronJob.
+  - AWS EMR provides ways to deploy common Hadoop frameworks and some of the tools can be used for ingesting (Spark, JDBC).
+  - AWS Glue can make connections to JDBC sources (many different database engines and through those connections transfer data for further processing)
+- Transactional data:
+  - Stateful: Amazon ElastiCache, RDS
+  - Stateless: Lambda, API Gateway, S3
 
 
 ## Domain 2: Data Store Management
