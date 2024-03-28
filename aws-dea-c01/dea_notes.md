@@ -1,0 +1,31 @@
+# AWS Certified Data Engineer Associate (DEA-C01) - Hands On
+- Analytics: EMR, AWS Lake Formation, Redshift, Kinesis, Glue, Amazon Managed Streaming for Kafka, OpenSearch Service, QuickSight, Athena
+- App Integration: EventBridge, Step Functions, AppFlow, Simple Notification Service (SNS), Simple Queue Service (SQS), Amazon Managed Workflows for Airflow
+- Compute: AWS Batch, EC2, Lambda, Serverless Application Repository
+- Containers: Amazon Elastic Container Registry (ECR), Elastic Container Service (ECS), Kubernetes Service (EKS)
+- Database: DocumentDB (MongoDB compatibility), DynamoDB, Keyspaces (Cassandra), MemoryDB (Redis), Neptune, Relational Database Service (RDS)
+- Development Tools: CLI, Cloud9, CDK, CodeBuild, CodeCommit, CodeDeploy, CodePipeline
+- Management and Governance: CloudFormation, CloudTrail, CloudWatch, AWS Config, Grafana, Systems Manager, AWS Well-Architected Tool
+- Migration and Transfer: Discovery Service, Migration Service, DB Migration Service, DataSync, Transfer Family, Snow Family
+- Networking and Content Delivery: CloudFront, PrivateLink, Route 53, Virtual Private Cloud (VPC)
+- Security, Identity, and Compliance: IAM, Key Management Service (KMS), Macie, Secrets Manager, Shield, AWS WAF
+- Storage: AWS Backup, EBS, Elastic File System, S3.
+- Others: API Gateway, SageMaker
+
+## Data Engineering Fundamentals
+- Data Mesh: individual teams own "data products" within a given domain. These data products serve various "use cases" around the organization
+  - Self-service tooling and infrastructure
+  - Data lakes, data warehouses could be part of it. But a "data mesh" is more about the data management paradigm and not the specific technologies or architectures.
+- ETL Pipelines:
+  - AWS Glue
+  - Process must be automated in some reliable way: EventBridge, Airflow, Step Functions, Lambda
+- Data Format
+  - Avro: binary format that stores both the data and its schema, allowing it to be processed later with different systems without needing the original system's context.
+  - Parquet: columnar storage format optimized for analytics. Allows for efficient compression and encoding schemes.
+- Data Lineage: a visual representation that traces the flow and transformation of data through its lifecycle, from its source to its final destination.
+  - Tracking errors back to their source.
+  - Ensures compliance with regulations.
+  - Provides a clear understanding of how data is moved, transformed, and consumed with systems.
+- Schema Evolution: ability to adapt and change the schema of a dataset over time without disrupting existing processes or systems.
+  - Maintains backward compatibility with older data records
+  - Glue scheme registry: schema discovery, validation, registration...
