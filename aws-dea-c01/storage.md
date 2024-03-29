@@ -1,0 +1,53 @@
+# Data Store Management
+
+## Amazon S3
+- Object values are the content of the body:
+  - Max. Object Size is 5TB (~5000GB)
+  - If uploading more than 5GB, must use "multi-part upload"
+- Replication (CRR and SRR)
+  - Cross-Region Replication (CRR)
+  - Same-Region Replication (SRR)
+  - Buckets can be in different AWS accounts
+  - Copying is asynchronous
+  - Must give proper IAM permissions to S3
+  - CRR: compliance, lower latency access, replication across accounts.
+  - SRR: log aggregation, live replication between production and test accounts
+- S3 storage classes: Standard (General Purpose), Standard-Infrequent Access (IA), One Zone-Infrequent Access, Glacier Instant Retrieval, Glacier Flexible Retrieval, Glacier Deep Archive, Intelligent Tiering.
+- Infrequent Access:
+  - For data that is less frequently accessed, but requires rapid access when needed
+  - Lower cost than S3 Standard
+  - S3 Standard-IA: 99.9% availability, disaster recovery, backups
+  - S3 One Zone-Infrequent Access (S3 One Zone-IA): high durability (99.9999999%) in single AZ, data lost when AZ is destroyed, 99.5% availability.
+    - Storing secondary backup copies of on-premise data, or data you can recreate
+- S3 Glacier Storage Classes:
+  - Low-cost object storage meant for archiving/backup
+  - Pricing: price for storage + object retrieval cost
+  - S3 Glacier Instant Retrieval:
+    - Millisecond retrieval, great for data accessed once a quarter
+    - Minimum storage duration of 90 days
+  - S3 Glacier Flexible Retrieval:
+    - Expedited (1 to 5 minutes), Standard (3 to 5 hours), Bulk (5 to 12 hours) - free
+    - Minimum storage duration of 90 days
+  - S3 Glacier Deep Archive: for long term storage
+    - Standard (12 hours), Bulk (48 hours)
+    - Minimum storage duration of 180 days
+- S3 Intelligent-Tiering
+  - Small monthly monitoring and auto-tiering fee
+  - Moves objects automatically between Access Tiers based on usage
+  - There are no retrieval charges in S3 Intelligent-Tiering
+- Moving between Storage Classes:
+  - Standard --> Standard IA --> Intelligent Tiering --> One-Zone IA --> Glacier Instant Retrieval --> Glacier Flexible Retrieval --> Glacier Deep Archive.
+  - Configure objects to transition to another storage class:
+    - Move objects to Standard IA class 60 days after creation.
+    - Move to Glacier for archiving after 6 months.
+  - Expiration actions: configure objects to expire (delete) after some time.
+    - Access log files can be set to delete after a 365 days
+    - Can be used to delete old versions of files (if versioning is enabled)
+    - Can be used to delete incomplete Multi-Part uploads
+- Scenario: the images thumbnails after profile photos are uploaded to S3 --> can be easily recreated, and only need to be kept for 60 days. The source images should be able to be immediately retrieved for these 60 days, and afterwards, the user can await up to 6 hours. How would you design this?
+  - S3 source images can be on Standard, with a lifecycle configuration to transition them to Glacier after 60 days.
+  - S3 thumbnails can be on One-Zone IA, with a lifecycle configuration to expire them (delete them) after 60 days.
+- Scenario: Should be able to recover your deleted S3 objects immediately for 30 days, although this may happen rarely, After this time, and for up to 365 days, deleted objects should be recoverable within 48 hours.
+  - Enable S3 versioning in order to have object versions, so that "deleted objects" are in fact hidden by a "deleted marker" and can be recovered.
+  - Transition the "non-current versions" of the object to Standard IA
+  - Transition afterward the "non-current versions" to Glacier Deep Archive
