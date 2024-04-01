@@ -1,0 +1,3 @@
+1. Amazon Athena Federated Query allows to directly run SQL queries across multiple data sources.
+- For example, the marketing analyst to query data from Amazon DynamoDB, RDS, Redshift, S3 without the need to move or replicate data. It's cost-effective for a one-time analysis job, as it eliminates the overhead of data transfer and additional storage.
+- The Athena's pay-per-query model and serverless nature also contribute to cost savings, especially for ad-hoc or one-time analytical tasks.
