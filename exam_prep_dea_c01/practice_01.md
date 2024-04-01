@@ -1,3 +1,5 @@
 1. Amazon Athena Federated Query allows to directly run SQL queries across multiple data sources.
 - For example, the marketing analyst to query data from Amazon DynamoDB, RDS, Redshift, S3 without the need to move or replicate data. It's cost-effective for a one-time analysis job, as it eliminates the overhead of data transfer and additional storage.
 - The Athena's pay-per-query model and serverless nature also contribute to cost savings, especially for ad-hoc or one-time analytical tasks.
+2. AWS CloudTrail is a service that provides a record of actions taken by a user, role, or an AWS service in AWS, enabling governance, compliance, operational auditing, and risk auditing or your AWS account.
+- Trail with data event logging, the company can track and log all write operations (such as PUT, POST, and DELETE actions) made to their S3 bucket. These logs can be directed to another S3 bucket within the same region for storage and analysis.
