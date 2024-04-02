@@ -1,0 +1,39 @@
+# Application Integration
+## Amazon SQS - Standard Queue
+- Scales from 1 message per second to 15000 per second
+- Default retention of messages: 4 days, maximum of 14 days
+- No limit to how many messages can be in the queue
+- Low latency (< 10ms on publish and receive)
+- Horizontal scaling in terms of the number of consumers
+- Limitation of 256KB per message sent
+- Producing Messages:
+  - Define Body
+  - Add message attributes (metadata - optional)
+  - Provide Delay Delivery (optional)
+  - Get back: message identifier and MD5 hash of the body
+- Consuming Messages:
+  - Poll SQS for messages (receive up to 10 messages at a time)
+  - Process the message within the visibility timeout
+  - Delete the message using the message ID and receipt handle
+- Use Cases:
+  - Decouple applications (handle payments asynchronously)
+  - Buffer writes to a database (example a voting application)
+  - Handle large loads of messages coming in (example an email sender)
+- SQS can be integrated with Auto Scaling through CloudWatch.
+- Maximum of 120 thousand in-flight messages being processed by consumers
+- Batch Request has a maximum of 10 messages - max 256KB
+- Message content is XML, JSON, unformatted text.
+- SQS Security:
+  - Encryption in flight using the HTTPs endpoint
+  - Can enable SSE (Server Side Encryption) using KMS
+    - SSE only encrypts the body, not the metadata (message ID, timestamp, attributes)
+  - IAM policy must allow usage of SQS
+  - SQS queue access policy:
+    - Finer grained control over IP
+    - Control over the time the requests come in.
+- Dead Letter Queue (DLQ):
+  - If a consumer fails to process a message within the Visibility Timeout --> the message goes back to the queue.
+  - We can set a threshold of how many times a message can go back to the queue.
+  - After the `MaximumReceives` threshold is exceeded, the message goes into a dead letter queue (DLQ)
+- Redrive to Source:
+  - Feature to help consume messages in the DLQ to understand what is wrong with them (Maybe manual inspection and debugging.)

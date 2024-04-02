@@ -7,7 +7,7 @@
 
 
 ## Amazon Kinesis
-- High `IteratorAge` implies that the last record that is read from the Kinesis data stream is increasing in age:
+- High `IteratorAge` implies that the last record read from the Kinesis data stream is increasing in age:
   - It could mean that the data is not being processed in a timely manner.
   - By default, Lambda will create one concurrent instance of the Lambda function for each shard (Kinesis Data Stream)
   - To re-shard is to increase the number of shards for Kinesis Data Streams. If there are more shards, there will be more Lambda function invocations that concurrently process data.
