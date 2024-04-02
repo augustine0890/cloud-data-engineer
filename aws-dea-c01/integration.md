@@ -37,3 +37,8 @@
   - After the `MaximumReceives` threshold is exceeded, the message goes into a dead letter queue (DLQ)
 - Redrive to Source:
   - Feature to help consume messages in the DLQ to understand what is wrong with them (Maybe manual inspection and debugging.)
+
+## Amazon Managed Workflows for Apache Airflow (MWAA)
+- Enables the creation of workflows using directed acyclic graphs (DAGs) in Python, which specify the tasks to be executed, their dependencies, and the order in which they should run.
+- DAG scheduling and Triggering: supports complex scheduling and triggering mechanisms for DAGs, enabling sophisticated workflow orchestration.
+- Use cases: complex workflows, ETL coordination, preparing ML data.
