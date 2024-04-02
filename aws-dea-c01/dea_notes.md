@@ -1,4 +1,4 @@
-# AWS Certified Data Engineer Associate (DEA-C01) - Hands On
+# AWS Certified Data Engineer Associate (DEA-C01)
 - Analytics: EMR, AWS Lake Formation, Redshift, Kinesis, Glue, Amazon Managed Streaming for Kafka, OpenSearch Service, QuickSight, Athena
 - App Integration: EventBridge, Step Functions, AppFlow, Simple Notification Service (SNS), Simple Queue Service (SQS), Amazon Managed Workflows for Airflow
 - Compute: AWS Batch, EC2, Lambda, Serverless Application Repository
