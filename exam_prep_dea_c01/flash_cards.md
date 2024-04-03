@@ -1,0 +1,11 @@
+- UltraWarm data nodes: it's a feature of OpenSearch that stores large amounts of read-only data cost-effectively through standard data nodes that use "hot" storage for faster performance.
+- Redshift Spectrum:
+- DataSync: ensures safe and effective data transfer by streamlining and speeding data transfers between AWS Storage services and on-premises storage systems and between AWS Storage services.
+- Resource Access Manager (RAM): secure sharing of AWS resource across different accounts or within an organization, simplifying access control and reducing overhead.
+- Apache Ranger: a framework that provides comprehensive data security across the Hadoop platform.
+- `groupSize` parameter: in Glue, the groupSize parameter specifies the target size of file groups in bytes when reading input files from S3.
+- Apache HBase: an open-source, NoSQL, distributed database. It operates on top of the HDFS to provide non-relational database capabilities for the Hadoop ecosystem.
+- Partition Projection: a technique used in data querying and storage systems to dynamically determine partitioning information at query time rather than storing it statically.
+- AWS Secrets Manager: securely manages, retrieves, and rotates credentials and secrets throughout their lifecycle, enhancing security posture by eliminating the need for hardcoded credentials in applications.
+- AWS Schema Conversion Tool: it facilitates the conversion of database schemas from one database engine to another, supporting a wide range of source and target databases including relational databases, data warehouse, and NoSQL databases.
+- Glue Data Catalog: a centralized service for storing and managing metadata across AWS data services, facilitating easy data discovery, management, and collaboration for analytics and ETL processes. It integrates with various AWS sources like S3, RDS, and Redshift.
