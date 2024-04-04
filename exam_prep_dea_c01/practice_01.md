@@ -3,3 +3,17 @@
 - The Athena's pay-per-query model and serverless nature also contribute to cost savings, especially for ad-hoc or one-time analytical tasks.
 2. AWS CloudTrail is a service that provides a record of actions taken by a user, role, or an AWS service in AWS, enabling governance, compliance, operational auditing, and risk auditing or your AWS account.
 - Trail with data event logging, the company can track and log all write operations (such as PUT, POST, and DELETE actions) made to their S3 bucket. These logs can be directed to another S3 bucket within the same region for storage and analysis.
+3. AWS Data Pipeline is designed for data-driven workflows to process and move data between AWS compute and storage services.
+- AppFlow also ensures secure data transfer with options for encryption and provides a user-friendly interface to manage data flows, making it accessible for users without deep technical expertise in coding or data integration.
+4. SageMaker Experiments is a useful tool for organizing, tracking, and comparing iterations of machine learning models; it primarily focuses on experiment management rather the detailed lineage tracking of all artifacts throughout their lifecycle.
+5. AWS Glue Workflows provides a managed ETL service that facilitates the preparation, transformation, and loading of data for analysis.
+- It supports the orchestration of ETL jobs that can be triggered based on schedule or event conditions. The service is designed specifically for data integration tasks, offering a visual interface to define workflows, manage job dependencies, and monitor execution.
+6. The most secure and recommended approach for managing access from Amazon EKS application to DynamoDB is to assign an IAM role to the EKS worker nodes with the necessary permissions to access DynamoDB and leverage the IAM roles for services accounts (IRSA) feature.
+- With IRSA, app running on EKS can securely access AWS services without embedding AWS credentials within containers.
+7. Initiating a retrieval job directly from Amazon Glacier allows you to retrieve the required data efficiently, albeit with a longer retrieval time compared to data stored in S3.
+- Restoring the archived data from Glacier to S3 and querying it using Amazon Athena provides a cost-effective solution, as Glacier data retrieval fees can be higher for expedited retrieval. By utilizing Amazon Athena, you can query the data directly in S3 without incurring additional retrieval costs, making it a cost-effective approach to fulfill the request
+8. CloudWatch Logs Insights can perform real-time log analysis using simple query language commands directly within the CloudWatch console.
+- It provides interactive visualizations and querying capabilities, enabling the team to quickly identify patterns of application failures and devise appropriate remediation strategies.
+9. Glue DataBrew is a visual data preparation tool that enables users to easily cleanse, normalize, and transform data without writing code.
+- DataBrew can apply transformations such as masking or hashing to sensitive fields directly within the data engineering pipeline, ensuring that the dataset is compliant with financial regulations regarding data privacy.
+- Amazon GuardDuty offers intelligent threat detection to monitor for suspicious activities, including potentially unauthorized access to data.
