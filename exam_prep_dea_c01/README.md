@@ -150,6 +150,33 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
 - [What is cloud storage](https://aws.amazon.com/what-is/cloud-storage/)
 - [Storage Best Practices for Data and Analytics Applications](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/building-data-lake-aws.html)
 - [Amazon S3 Tutorials](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorials.html)
-- 
+
 ## Domain 3: Data Operations and Support
+### Lab: Analyzing Data by Using Athena
+- AnyCompany Consulting wants to analyze Arizona’s real estate because of the current surge of demand for Arizona houses. As a data engineer at AnyCompany, you must use Amazon Athena, a serverless interactive query service, to analyze data on Arizona houses in an Amazon Simple Storage Service (Amazon S3) bucket by using standard SQL.
+- In this lab, you create a table in Athena by using the Athena create table form. You then write and run SQL queries to analyze data in Amazon S3 by using Athena.
+- Create a table in Athena by using the Athena create a table form.
+- Run SQL queries to analyze data in Amazon S3 by using Athena.
+- [Adding a Table using a Form](https://docs.aws.amazon.com/athena/latest/ug/data-sources-glue.html#data-sources-glue-manual-table)
+- [Aggregate Functions: Count](https://trino.io/docs/current/functions/aggregate.html#count)
+### Questions
+1. Create an AWS Glue ETL job to convert the input data to Parquet. Create a second Glue ETL job that calculates the aggregated statistics. Use Glue Data Catalog to register both datasets for use with Athena and QuickSight. Build a data pipeline in Amazon MWAA that specifies the Verbose=True parameter. Schedule the directed acyclic graphs (DAGs) to run hourly.
+- A solution that catalogs the data that is created by the conversion and calculation job makes these datasets available to both Athena and QuickSight. Amazon MWAA is a managed orchestration service for Apache Airflow that gives you the ability to build data pipelines in the cloud.
+- The Verbose=True parameter exposes the AWS Glue logs to Amazon MWAA and provides enhanced observability through the Amazon MWAA dashboard.
+2. You can use Athena to directly query data in Amazon S3. Athena is serverless. Therefore, you do not need to select the infrastructure necessary to run the queries for the monthly process. You can use Athena tables and views to query a subset of the data and to combine multiple tables and datasets into one query.
+- You can use Redshift Serverless to run analytics workloads without the need to choose and select the necessary infrastructure and compute to run the workloads. You can use Redshift Spectrum in Redshift Serverless to perform analysis on data in Amazon S3 without the need to previously ingest the data in Amazon Redshift.
+3. DataBrew is a visual data preparation service designed for data analysts and data scientists. DataBrew has over 350 pre-built data transformations. You can create a profile job in AWS DataBrew to infer the schema of the data with rich insights. Then, you can create a recipe to apply the data transformations. Additionally, you can reuse DataBrew recipes.
+- [DataBrew](https://docs.aws.amazon.com/databrew/latest/dg/projects.html)
+- [DataBrew and Amazon QuickSight](https://docs.aws.amazon.com/databrew/latest/dg/projects.html)
+4. The JVMMemoryPressure error signifies that there is an unbalanced shard allocation across nodes. Therefore, there are too many shards in the cluster.
+- When you choose the number of shards, you must distribute an index evenly across all data nodes in the cluster. However, these shards should not be too large or too numerous. A general guideline is to keep shard size between 10–30 GiB for workloads where search latency is a key performance objective. Keep shard size between 30–50 GiB for write-heavy workloads such as log analytics.
+- [Choosing the number of shards](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/sizing-domains.html#bp-sharding)
+5.  AWS Batch is a fully managed solution that you can use to run batch computing workloads. AWS Batch can automatically provision compute resources. AWS Batch can manage job priorities by using queue priorities. AWS Batch can run jobs on top of Amazon ECS. Therefore, this solution meets the requirement to use existing containerization skills on the team.
+- Step Functions is a serverless state machine service that you can use to orchestrate and coordinate many AWS services including AWS Batch.
+- [AWS Batch](https://docs.aws.amazon.com/batch/latest/userguide/job_scheduling.html)
+6. Configure the trail to send the logged events to AWS CloudTrail Lake in an event data store. Query the log data in the data store by using SQL.
+- CloudTrail can send logs to CloudTrail Lake without the need to develop a custom solution. CloudTrail Lake automatically converts the JSON event type to Apache ORC format, and stores the data in an event data store. CloudTrail Lake gives you the ability to run SQL queries across multiple event data stores automatically. You can use this solution to analyze the event data automatically.
+7. DataBrew can implement data quality rules as part of a ruleset without the need to configure the transient EMR cluster with Apache Spark. Additionally, with DataBrew, you do not need to create a custom job with PyDeequ to perform data quality validations. DataBrew can implement data quality rules as part of a ruleset.
+- DataBrew allows you to create a data quality ruleset that automatically performs data quality validations as part of a profiling job. You can use DataBrew in combination with a Step Functions state machine to automate data validation in an ingestion pipeline. 
+
 ## Domain 4: Data Security and Governance
