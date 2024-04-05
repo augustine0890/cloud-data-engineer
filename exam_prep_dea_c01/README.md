@@ -100,7 +100,23 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
   - API Gateway, or ElastiCache: cache responses and reduce latency.
   - AWS CloudWatch: monitor and track the performance, latency, and usage of your data API, configure logging to capture API requests, logs, and errors for troubleshooting and analysis.
   - CodePipeline and CodeBuild: continuous integration and deployment to automate the testing and deployment process.
-
+### Lab: Data Ingestion and Transformation using EMR and Spark
+- In this lab, you read data from Amazon Simple Storage Service (S3) and implement data transformation as an Apache Spark job on an Amazon EMR cluster.
+- Upload and review the dataset in S3
+- Connect to an EMR cluster by using AWS CLI
+- Use Spark to process the data.
+### Questions
+1. You can use AWS DMS to migrate databases or data warehouses to AWS. You can disable Multi-AZ to eliminate the I/O and network activity invlolved in replicating storage blocks from one Availability Zone to another. Therefore, you can preserve underlying storage throughput and the related network bandwidth. This preservation would be useful for the I/O activity related to the data load or data migration.
+- Disables or drops all referential integrity constraints during the full load migration will reduce associated overhead. If you enable these constraints during the data load, every child record will be validated with its parent table, thereby saving migration time.
+- Disables or drops all table-level triggers (row-level or statement-level triggers) during the full load migration will reduce associated overhead. This solution will prevent triggers from repeatedly activating for every row or multiple rows loaded.
+2. EventBridge is a highly scalable, serverless event bus service. You can use EventBridge to build event-driven architectures by using a publish and subscribe model.
+- EventBridge supports the integration of various AWS services to create event-driven workflows, including Step Functions. Lambda is a serverless compute service that you can use to run code without the need to provision or manage servers. You can use EventBridge to run data transformations and load the data into the cloud data warehouse. You can combine these services to create a highly scalable, serverless data pipeline that processes data in near real time.
+3. A JSON dataset might include nested structures, arrays, and lists. You can use the SUPER data type to store semi-structured data. You can query the SUPER data type by using dots and bracket notations, also known as PartiQL query language.
+- [Semi-structured in Redshift](https://docs.aws.amazon.com/redshift/latest/dg/super-overview.html)
+4. Athena notebook is a fully managed solution that you can use to query data that is stored in Amazon S3 and other sources. You can register data in Amazon S3 by using Data Catalog. Then, you can query data in Amazon S3 with no additional infrastructure by using Spark and SQL.
+- [Spark in Athena](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html)
+5. Configure the applications to send the log files to Kinesis Data Streams. Install the Kinesis Client Library (KCL) on a group of EC2 instances. Use the EC2 to read the stream records and convert the log files to Parquet and store the Parquet files in S3.
+6. Create materialized views in Redshift for aggregated sales. Run queries against the materialized views instead of the sales table.
 
 ## Domain 2: Data Store Management
 ## Domain 3: Data Operations and Support
