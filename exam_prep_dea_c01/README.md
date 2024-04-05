@@ -180,3 +180,33 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
 - DataBrew allows you to create a data quality ruleset that automatically performs data quality validations as part of a profiling job. You can use DataBrew in combination with a Step Functions state machine to automate data validation in an ingestion pipeline. 
 
 ## Domain 4: Data Security and Governance
+### Lab: Managing Amazon S3 Access by Using S3 Access Points and VPC Endpoints
+- AnyCompany Consulting uses Amazon Simple Storage Service (Amazon S3) to store shared datasets for their analytics use cases. These datasets are accessed by different applications that run in an Amazon Virtual Private Cloud (Amazon VPC). AnyCompany is also working on their data governance, ensuring both their people and applications only have access to the appropriate data. As a data engineer at AnyCompany, you want to simplify the data access process for the applications. You also want to ensure that the applications that run inside the VPC only have access to specific S3 buckets.
+- In this lab, you create an S3 VPC-only access point, a feature of Amazon S3, and then use it in the VPC endpoint policy to manage access to the data in the S3 bucket. You also create bucket policies to firewall S3 bucket access to VPCs only.
+- Create a VPC-only access point for the S3 bucket.
+- Create an S3 gateway endpoint in the VPC and add a VPC endpoint policy.
+- Add a bucket policy to the S3 bucket to only allow access from the VPC.
+- [Creating an Access Point](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-access-points.html)
+- [Gateway endpoints for Amazon S3](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html#create-gateway-endpoint-s3)
+- [Control access using bucket policies](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html#bucket-policies-s3)
+### Questions
+1. Create Glue custom transformation to encrypt columns that contain PII. Load the data into Redshift. Store the encryption key in Secrets Manager. Configure Lambda function to decrypt the columns that contain PII and register a Lambda user-defined functions (UDF). Grant permission to unauthorized users on the UDF.
+- You need to implement column-level encryption. Column-level encryption is not a native feature of Amazon Redshift. You can use an AWS Glue custom transformation to encrypt the PII data. A solution that controls access to the encryption key will limit access to authorized users.
+- [Redshift UDFs](https://docs.aws.amazon.com/redshift/latest/dg/user-defined-functions.html)
+2. The `glue:PutResourcePolicy` action is missing the permission policy that is attached to the role that the data team account uses.
+- The error occurs because AWS Glue invokes glue:PutResourcePolicy when the grantee account accepts the resource share invitation. To resolve the issue, allow the glue:PutResourcePolicy action by the assumed role that the grantor account uses.
+- [Troubleshooting Lake Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/troubleshooting.html#trouble-cross-account)
+3. Use Amazon S3 server-side encryption with AWS KMS keys (SSE-KMS)
+- This solution meets the server-side encryption requirement. This solution gives users the ability to manage the object access permissions independently from the encryption keys. The key and the object each have a different policy. A user must be authorized on both policies to be able to perform GetObject and PutObject operations.
+- [AWS KMS keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+4. Enable CloudTrail Lake. Create an event data store and enable logging for all accounts in the company. Run queries on the logs by using the CloudTrail Lake query editor.
+- CloudTrail Lake simplifies CloudTrail analysis workflows by integrating collection, storage, preparation, and optimization for analysis and querying in the same product. This solution removes the need to maintain separate data processing pipelines that span across teams and products to analyze CloudTrail events.
+- [CloudTrail Lake](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html)
+5. Create Redshift datashares for the business units. Grant the appropriate permissions to each businees unit.
+- Amazon Redshift datashares provide live access to data that you store in your data warehouse. With this feature, you can securely share live data with Redshift clusters in the same or different AWS accounts. This feature is available within Amazon Redshift. 
+- An IAM role is an identity that you can use to provide specific permissions to users, applications, or services. A solution that grants an IAM role is not sufficient to support collaboration without moving the data.
+- [Share data in Redshift](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html)
+6. Run a profile job by using AWS Glue DataBrew. Create an AWS Lambda function that reads the profiling job results. If PII is detected, configure the function to run a second DataBrew job that mask any columns that contain PII and sends the data to a results bucket in Amazon S3.
+- DataBrew provides data profiling and data masking capabilities that give you the ability to create an automated process to identify and mask PII by using a Step Functions state machine.
+7. Use Amazon Macie to identify sensitive data. Use AWS Glue Studio to transform and mask the findings.
+- Macie is a fully-managed data security and data privacy service. Macie uses machine learning and pattern matching to help you discover, monitor, and protect sensitive data. AWS Glue Studio can compose data transformations that perform complex tasks including to detect and mass sensitive data. 
