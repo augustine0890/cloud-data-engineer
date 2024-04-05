@@ -119,5 +119,37 @@ Exam Guide: [DEA-C01](https://d1.awsstatic.com/training-and-certification/docs-d
 6. Create materialized views in Redshift for aggregated sales. Run queries against the materialized views instead of the sales table.
 
 ## Domain 2: Data Store Management
+### Lab: Data Store Management that Uses DynamoDB and AWS Glue
+- In this lab, you create DynamoDB table by importing data from S3 bucket. You then create a crawler in Glue that detects the schema from DynamoDB and populates the Glue Data Catalog with the metadata. Finally, you create and run Glue job that extracts the data from the DynamoDB table and stores the data in S3.
+- [Arizona House Dataset](https://www.kaggle.com/datasets/antoniong203/arizona-houses-2021)
+- Import data from S3 to DynamoDB
+- Create an AWS Glue crawler
+- Create and run an AWS Glue extract, transform, and load (ETL) job that extracts data from DynamoDB and stores the data in an S3 bucket.
+- [Adding Glue crawler](https://docs.aws.amazon.com/glue/latest/dg/tutorial-add-crawler.html)
+- [Visual ETL with AWS Glue Studio](https://docs.aws.amazon.com/glue/latest/dg/edit-nodes-chapter.html)
+
+### Questions
+1. Configures S3 Transfer Acceleration can ensure fast, secure, and private file transfers across long geographic distances.
+- S3 Transfer Acceleration uses the globally distributed edge locations of CloudFront. Additionally, it uses AWS backbone networks. You can configure it in S3. This solution is private and is suitable to use with data that constantly changes. This solution effectively minimizes latency calls by distance. Therefore, customers from various locations can experience improved upload and download speeds.
+- A solution that uses S3 presigned URLs would allow customers to interact with Amazon S3 in a private way.
+2. Unload data that is older than 2 weeks daily to S3 bucket. Delete the data from the Redshift tables. Use Redshift Spectrum for the quarterly queries. Create a lifecycle management policy to delete data from the S3 bucket after 6 months.
+- You can unload older, infrequently queried data from Amazon Redshift to Amazon S3 to reduce data storage costs. You can use Redshift Spectrum to run complex queries directly on the data in the S3 bucket. You can use a lifecycle management configuration to delete data that is no longer needed.
+3. Glue crawler can automatically populate the Data Catalog with metadata about tables the crawler discovers on S3.
+- The incremental crawl feature gives an AWS Glue crawler the ability to crawl only the folders that have been added since the previous crawl. Without this feature, the crawler would re-crawl all the previously cataloged files and folders.
+- A solution that specifies a sample size for the crawler allows you to control the number of files in each folder that will be crawled. If you do not specify a sample size, then all the files in the folder will be crawled.
+- You can configure crawlers to use S3 events to identify any changes in an S3 location. This solution provides a significantly faster crawler runtime because you no longer need the listing of S3 objects in a specific path. When a crawler runs in event mode, the crawler will consume S3 events from an Amazon Simple Queue Service (Amazon SQS) queue to find any changes that were made to an S3 path.
+4. Data Catalog is a metadata catalog. This metadata catalog contains references to data that are used as the source and the targets of extract, transform, and load (ETL) jobs in AWS Glue.
+- You can use indexes to improve query performance, especially in scenarios when an AWS Glue table has thousands of partitions. Indexes help reduce the time that it takes to query a table by fetching a subset of partitions rather than loading all partitions in a table. This expression will increase query performance. The expression passes Region and uses supported operators.
+5. DynamoDB gives you the ability to create a timestamp for each item as a number attribute. After the time has passed, DynamoDB deletes these unnecessary items without the use of write throughput.
+- [DynamoDB TTL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html)
+6. An Object Lock legal hold prevents an object version from being overwritten or deleted. A legal hold remains in effect until the hold is removed. Legal holds do not have a retention period.
+- A deny bucket policy specifies an action that cannot be performed. A deny policy on the bucket would prevent files from being deleted if Delete Action is part of the actions in the policy.
+7. The most suitable partition columns are those that are frequently used in queries and have low cardinality. Low cardinality means the columns possess a limited number of distinct values. To partition based on a column with high cardinality would result in an overly fine-grained partitioning scheme, which is generally not efficient. After you identify an appropriate partition column, you should use the column as a filter in queries to reduce the amount of data that Athena scans.
+- Parquet is suitable for analytics use cases including Athena. Parquet files are splittable and offer better compression ratios for data on Amazon S3. Parquet files also reduce the I/O necessary to run queries. You can also perform predicate pushdown so that Athena queries will fetch only the blocks needed by the query. A solution that uses Parquet leads to significantly better performance for Athena queries and reduces cost.
+### Additional Resources
+- [What is cloud storage](https://aws.amazon.com/what-is/cloud-storage/)
+- [Storage Best Practices for Data and Analytics Applications](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/building-data-lake-aws.html)
+- [Amazon S3 Tutorials](https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorials.html)
+- 
 ## Domain 3: Data Operations and Support
 ## Domain 4: Data Security and Governance
