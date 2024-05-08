@@ -10,3 +10,35 @@
   - Monitor and Optimize Data Storage adn Data Processing (10-15%)
 ## The Evolving World of Data and the Data Engineer
 - A data engineer deals with data that can be structured, unstructured, or aggregated. Structured data can be stored in Azure Blob storage, Azure SQL Database, and Azure SQL Data Warehouse.
+  - As a data engineer, you'll extract raw data from a structured or unstructured data pool and migrate it to a staging data repository. Because the data source might have a different structure than the target destination, you'll transform the data from the source schema to the destination schema.
+- It is challenging to align on-premises expenses with actual usage. With on-premises servers, the expenses will almost never align with actual use.
+- Cloud systems track costs by subscriptions. A subscription can be based on usage measured in compute units, hours, or transactions.
+- One benefit of Cloud environments requires no capital investment. T — You pay for a service or product as you use it i.e., pay-as-you-go pricing.  Moving servers and services to the cloud also reduces operational costs.
+- High availability duplicates customer content for redundancy and meets SLAs in Azure.
+- The lift-and-shift strategy provides immediate benefits, including higher availability, lower operational costs, and the ability to transfer workloads from one datacenter to another.
+- Extract, Transform and Load (ETL) is a typical process for ingesting data from an on-premises database to an on-premises data warehouse.
+- In an ELT process, data is extracted and loaded in its native format. This change reduces the time required to load the data into a destination system. The change also limits resource contention on the data sources.
+- Azure Data Factory provides robust resources and nearly 100 enterprise connectors. It Also allows you to transform data by a wide variety of languages. It can orchestrate the movement of data between various data stores.
+- __The Tasks of Data Engineer:__
+  - A data engineer's data work process that helps meet business requirements is called data wrangling (large scale).
+  - Primary responsibilities include using services and tools to ingest, egress, and transform data from multiple sources. Including managing, monitoring, and ensure the security and privacy of data to satisfy business neeeds.
+  - Workflow: source --> prepare --> ingest --> analyze --> consume.
+  - During the extraction process, the data and its source are defined.
+  - Data engineer: data store, secured, ETL/ELT (monitoring, logging). 
+  - Data scientist: descriptive analytics, predictive analytics, deep learning, data wrangling, feature engineering.
+  - AI engineer: AI services, cognitive services (voice, vision, language), APIs, Embed, Store.
+  - A work plan to implement ETL operations should include a provisioning workflow and a holistic workflow.
+  - Business case: create a visualization of the data's history for Contoso's Chief Medical Officer
+    - Azure IoT Hub: capture real-time data from the ICU's IoT devices.
+    - Azure Stream Analytics: stream and enrich the IoT data to create windows and aggregations, and to integrate Azure ML.
+    - Azure Data Lake Storage Generation 2: store the biometric data at high-speed.
+    - Azure Data Factory: perform the extract load transform and final load.
+    - Azure Synapse Analytics: provide data warehousing and big data engineering services to support the data needs.
+    - Power BI: create the patient dashboard. Showing real-time telemetry about the patient's condition, patient's recent history.
+    - Holistic workflow: Setup IoT Hub (capture data) --> connect to Stream Analytics (window creation, aggregate)
+      - IoT Hub moves the streaming data to Azure Data Lake Storage by using Azure Functions
+      - Setup Azure Functions to store the Stream Analytics aggregates in Azure Data Lake Storage Gen 2.
+      - Use Azure Data Factory to load data from the Data Lake into Azure Synapse Analytics to support data needs.
+      - In parallel, connect the Azure Machine Learning Services to Azure Data Lake Storage to perform predictive analytics.
+      - Connect Power BI to stream analytics to pull the real-time aggregates for the patient data.
+      - Connect Azure Synapse Analytics to pull the historical data to create a combined dashboard
