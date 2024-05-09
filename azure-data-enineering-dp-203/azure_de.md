@@ -8,6 +8,7 @@
   - Design and Develop Data Processing (25-30%)
   - Design and Implement Data Security (10-15%)
   - Monitor and Optimize Data Storage adn Data Processing (10-15%)
+
 ## The Evolving World of Data and the Data Engineer
 - A data engineer deals with data that can be structured, unstructured, or aggregated. Structured data can be stored in Azure Blob storage, Azure SQL Database, and Azure SQL Data Warehouse.
   - As a data engineer, you'll extract raw data from a structured or unstructured data pool and migrate it to a staging data repository. Because the data source might have a different structure than the target destination, you'll transform the data from the source schema to the destination schema.
@@ -21,7 +22,7 @@
 - Azure Data Factory provides robust resources and nearly 100 enterprise connectors. It Also allows you to transform data by a wide variety of languages. It can orchestrate the movement of data between various data stores.
 - __The Tasks of Data Engineer:__
   - A data engineer's data work process that helps meet business requirements is called data wrangling (large scale).
-  - Primary responsibilities include using services and tools to ingest, egress, and transform data from multiple sources. Including managing, monitoring, and ensure the security and privacy of data to satisfy business neeeds.
+  - Primary responsibilities include using services and tools to ingest, egress, and transform data from multiple sources. Including managing, monitoring, and ensure the security and privacy of data to satisfy business needs.
   - Workflow: source --> prepare --> ingest --> analyze --> consume.
   - During the extraction process, the data and its source are defined.
   - Data engineer: data store, secured, ETL/ELT (monitoring, logging). 
@@ -41,4 +42,29 @@
       - Use Azure Data Factory to load data from the Data Lake into Azure Synapse Analytics to support data needs.
       - In parallel, connect the Azure Machine Learning Services to Azure Data Lake Storage to perform predictive analytics.
       - Connect Power BI to stream analytics to pull the real-time aggregates for the patient data.
-      - Connect Azure Synapse Analytics to pull the historical data to create a combined dashboard
+      - Connect Azure Synapse Analytics to pull the historical data to create a combined dashboard.
+
+## Services on the Microsoft Azure Data Platform
+- Relational database systems hold structured data, making them difficult to react to changing data requirements.
+- Azure Blob: object store for text and binary data and is the cheapest option for this type of storage.
+- Azure Files: file share for cloud or on premises deployments.
+- Azure Data Lake Storage: Hadoop compatible data repository that can store any size or type data.
+  - Unlimited scalability
+  - Zone-redundant storage
+  - POSIX compliance
+  - Security support for access control lists (ACLs)
+  - An optimized ABFS driver that's designed for big data analytics
+  - Data Lake Storage Gen2 Queries: Azure Blob Storage API, Azure Data Lake System API.
+- Azure Cosmos DB (NoSQL): can deploy using API models of SQL API, MongDB, Cassandra, Gremlin, Table API.
+- Azure SQL Databases: OLTP
+  - Can use Transact-SQL (T-SQL) techniques for ingesting data and from the movement of data using Azure Data Factory.
+- Azure Synapse Analytics: brings together enterprise data warehousing and big data analytics, data integration, and visualization into a single environment.
+- Azure Stream Analytics: process streaming data and respond to data anomalies in real time.
+  - You can use simple SQL constructs to write complex temporal queries and analytics.
+  - Azure Synapse Pipelines leverages the capabilities of Azure Data Factory and is the cloud-based ETL and data integration service that allows you to create data-driven workflows for orchestrating data movement and transforming data at scale.
+- Azure HDInsight: help you ingest, process analyze big data.
+  - HBase is a NoSQL database built on Hadoop that is commonly used for search engines.
+- Azure Databricks provides one-click setup, streamlined workflows, and an interactive workspace for Spark-based applications.
+- Azure Purview: unified data map, search data faster, analyze data in more depth.
+  - Azure Data Catalog is a central place where an organization's users can contribute their knowledge. Together, they build a community of data sources that the organization owns.
+- Event Hubs uses a partitioned consumer model to scale out your data stream and is integrated into the big data and analytics services of Azure including Databricks, Stream Analytics, ADLS, and HDInsight.
