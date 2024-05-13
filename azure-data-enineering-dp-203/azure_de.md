@@ -55,15 +55,17 @@
   - Security support for access control lists (ACLs)
   - An optimized ABFS driver that's designed for big data analytics
   - Data Lake Storage Gen2 Queries: Azure Blob Storage API, Azure Data Lake System API.
+  - Supports role-based access control (RBAC) at the file and folder level.
 - Azure Cosmos DB (NoSQL): can deploy using API models of SQL API, MongDB, Cassandra, Gremlin, Table API.
 - Azure SQL Databases: OLTP
   - Can use Transact-SQL (T-SQL) techniques for ingesting data and from the movement of data using Azure Data Factory.
 - Azure Synapse Analytics: brings together enterprise data warehousing and big data analytics, data integration, and visualization into a single environment.
+  - Supports distributed round-bin, and hash tables.
 - Azure Stream Analytics: process streaming data and respond to data anomalies in real time.
   - You can use simple SQL constructs to write complex temporal queries and analytics.
   - Azure Synapse Pipelines leverages the capabilities of Azure Data Factory and is the cloud-based ETL and data integration service that allows you to create data-driven workflows for orchestrating data movement and transforming data at scale.
 - Azure HDInsight: help you ingest, process analyze big data.
-  - HBase is a NoSQL database built on Hadoop that is commonly used for search engines.
+  - HBase is a NoSQL database built on Hadoop that is commonly used for search engines and includes automatic failover.
 - Azure Databricks provides one-click setup, streamlined workflows, and an interactive workspace for Spark-based applications.
 - Azure Purview: unified data map, search data faster, analyze data in more depth.
   - Azure Data Catalog is a central place where an organization's users can contribute their knowledge. Together, they build a community of data sources that the organization owns.
