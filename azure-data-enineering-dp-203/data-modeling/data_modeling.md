@@ -12,3 +12,18 @@
 - `docker run --name my-postgres -e POSTGRES_DB=studentdb -e POSTGRES_USER=student -e POSTGRES_PASSWORD=student -d -p 5432:5432 postgres:latest`
 - Connect the PostgreSQL container:
     - `docker exec -it my-postgres psql -U student -d studentdb`
+
+## NoSQL Database (Apache Cassandra)
+- NoSQL is better when you have large amounts of data for which you need high availability or if you need to scale out quickly.
+- When to use a NoSQL Database:
+    - Large amounts of data
+    - Need horizontal scalability
+    - Need high throughput - fast reads
+    - Need a flexible schema
+    - Need high availability
+    - Need to be able to store different data type formats
+    - Users are distributed with low latency
+- Apache Cassandra uses its own query language CQL.
+- Keyspace: collection of tables (database)
+- Table: a group of partitions
+- Rows: a single item
