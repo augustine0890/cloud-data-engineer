@@ -12,6 +12,24 @@
 - `docker run --name my-postgres -e POSTGRES_DB=studentdb -e POSTGRES_USER=student -e POSTGRES_PASSWORD=student -d -p 5432:5432 postgres:latest`
 - Connect the PostgreSQL container:
     - `docker exec -it my-postgres psql -U student -d studentdb`
+### Relational Data Models
+- Normalization
+    - To reduce data redundancy and increase data integrity
+    - Keep relationships between tables together with foreign keys
+    - All columns in the table must reply on the Primary Key
+    - No transitive dependencies: to get from A to C without going through B. Updating data in just 1 place.
+The process of normalization is a step by step process:
+    - First Normal Form (1NF)
+    - Second Normal Form (2NF)
+    - Third Normal Form (3NF)
+- Denormalization
+    - The process of trying to improve the read performance of a database at the expense of losing some write performance by adding redundant copies of data.
+    - Must be done in read heavy workloads to increase performance.
+- Fact and Dimension Tables
+- Fact table consists of the measurements, metrics or facts of a business process.
+- Dimension: a structure that categorizes facts and measures in order to enable users to answer business questions. Dimensions are people, products, place, and time.
+- Star Schema: is a type of database schema that is optimized for querying large datasets. It is designed in a denormalized form, which simplifies and speeds up read operations.
+- Snowflake Schema: is more normalize form of database schema than a star schema. It involves normalizaing dimension tables into multiple related tables, which can reduce redundancy but increase complexity.
 
 ## NoSQL Database (Apache Cassandra)
 - NoSQL is better when you have large amounts of data for which you need high availability or if you need to scale out quickly.
