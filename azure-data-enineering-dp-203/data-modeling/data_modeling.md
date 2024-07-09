@@ -45,3 +45,10 @@ The process of normalization is a step by step process:
 - Keyspace: collection of tables (database)
 - Table: a group of partitions
 - Rows: a single item
+
+### NoSQL Data Models
+- In a distributed database, in order to have high availability, you will need copies of your data.
+- CAP Theorem:
+    - Consistency: every read from the database gets the latest (and correct) piece of data or an error
+    - Availability: every request is received and a response is given, without a guarantee that the data is the latest update.
+    - Partition tolerance: the system continues to work regardless of losing network connectivity between nodes.
