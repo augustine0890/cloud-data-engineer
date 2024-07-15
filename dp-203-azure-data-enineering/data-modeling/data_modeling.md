@@ -52,3 +52,12 @@ The process of normalization is a step by step process:
     - Consistency: every read from the database gets the latest (and correct) piece of data or an error
     - Availability: every request is received and a response is given, without a guarantee that the data is the latest update.
     - Partition tolerance: the system continues to work regardless of losing network connectivity between nodes.
+- Data Modeling in Cassandra:
+    - Denormalization must be done for fast reads.
+    - Always think Queries first
+    - One table per query is a great strategy
+    - If your business needs calls for ad-hoc queries, these are not strength of Apache Cassandra --> create a new table that will fit your new query.
+- Apache Cassandra does not allow for duplicated data in the rows.
+- It depends on the data you have and the queries you will run. You may need to combine several columns in the Primary Key to make a Composite Key so that each of the rows are unique.
+- The PRIMARY KEY is made up of the partition key and the clustering columns.
+    - The clustering column is not required in the primary key. It can be used for ordering the data in the table, but is not required.
