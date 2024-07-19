@@ -61,3 +61,13 @@ The process of normalization is a step by step process:
 - It depends on the data you have and the queries you will run. You may need to combine several columns in the Primary Key to make a Composite Key so that each of the rows are unique.
 - The PRIMARY KEY is made up of the partition key and the clustering columns.
     - The clustering column is not required in the primary key. It can be used for ordering the data in the table, but is not required.
+
+## Project: Data Modeling with Cassandra
+- The ETL pipeline that transfers data from a set of CSV files within a directory to create a streamlined CSV file to model and insert data into Apache Cassandra tables.
+- Checklist:
+    - Locate the dataset in the `event_data` folder
+    - Model your NoSQL Database.
+- Creates `event_data_new.csv` file.
+- Uses appropreate datatype with the `CREATE` statement
+- Creates correct Apache Cassandra tables for each of the three queries. The `CREATE TABLE` statement should include the appropriate table.
+- The combination of the `PARTITION KEY` alone or with the addition of `CLUSTERING COLUMNS` should be used appropriately to uniquely identify each row.
