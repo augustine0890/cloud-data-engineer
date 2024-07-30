@@ -2,6 +2,7 @@
 
 ## Orchestration
 - DE: ingesting data into the data warehouse to produce datasets for different teams.
+- Data orchestration: the coordination and automation of data flow across various tools and systems to deliver quality data products and analytics.
 
 ## Aifflow
 - Apache Airflow is a way to programmatically author, schedule, and monitor (batch) data pipelines.
