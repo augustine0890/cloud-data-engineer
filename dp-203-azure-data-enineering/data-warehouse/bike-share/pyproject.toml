@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "bike-share"
+version = "0.1.0"
+description = "Bike Share Data Analytics"
+authors = ["augustine0890 <augustino0890@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psycopg2 = "^2.9.9"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
