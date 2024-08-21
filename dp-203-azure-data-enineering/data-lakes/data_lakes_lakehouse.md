@@ -23,6 +23,8 @@
     - After some filtering, cleaning, and augmenting, the data can be considered silver.
     - Finally, with the addition of business-level aggregates such as you might see with a star schema, data can be considered gold and ready for analytics and reporting needs.
 
-
 ## Data Wrangling with Spark
+- Spark uses a functional programming concept called lazy evaluation. Before Spark does anything with the data, it first built step-by-step directions of what functions and data it will need --> Directed Acyclic Graph (DAG)
+- Spark Broadcast: reduce network overhead and to reduce communications. It only uses with Spark Context
+
 ## Data Lakes and Azure Databricks
