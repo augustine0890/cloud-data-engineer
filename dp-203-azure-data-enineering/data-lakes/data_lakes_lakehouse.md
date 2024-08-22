@@ -28,3 +28,22 @@
 - Spark Broadcast: reduce network overhead and to reduce communications. It only uses with Spark Context
 
 ## Data Lakes and Azure Databricks
+- Azure Databricks is an integral part of data engineering pipeline to develop end-to-end data processing and analytics, as well as preparing data for machine learning applications.
+    - Ingest structured, unstructured data into a data lake
+    - Provide data flows
+    - Provide data processing
+- Azure Data Lake Gen 2 contains and extends Azure Blob Storage
+- There are three main tasks to working with Delta Lake:
+    - Ingest data into delta lake
+    - Create and delete tables
+    - Read and write data both to and from files, tables
+- Write data into Delta lake
+```sql
+spark.sql("CREATE TABLE TableName \
+    USING DELTA LOCATION '/delta/data'
+")
+```
+**Stages of Data Processing**
+- Data are ingested raw into ingestion tables (Bronze stage)
+- Data are refined and combined into what is commonly called `Silver` stage --> Often used by data scientists and machine learning engineer.
+- Final stage is the creation of features and aggregates such as a star schema's fact and dimension tables --> `Gold` stage for common BI and analytics solutions such as Azure Synapse or PowerBI.
