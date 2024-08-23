@@ -1,7 +1,6 @@
 # Azure Data Lake for Bike Share Data Analytics
 - `assets`: This folder includes screenshots that provide proof of task completion, including on the EXTRACT section.
-- `data`: This directory contains raw CSV files for `publicdate`, `payments`, `riders`, `stations`, and `trips`.
-    - For the `publicdate.csv` file, it based on `payments.csv` using python script `create_publicdate.py`.
+- `data`: This directory contains raw CSV files for `payments`, `riders`, `stations`, and `trips`.
 - `notebooks`: This folder contains the Python (Pyspark) notebooks used to extract, load, and transform steps.
 - `solutions`: This folder documents the solutions for tasks 1 through 4. Each task is addressed in detail, with explanations, code, and methodology used to achieve the project’s outcomes.
 
