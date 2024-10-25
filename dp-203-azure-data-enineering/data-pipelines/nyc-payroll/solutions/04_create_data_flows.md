@@ -1,8 +1,19 @@
-**Create data flow to load 2020 Payroll data from Azure DataLake Gen2 storage to SQL DB**
+**Create Data Flows and Pipelines**
+1. Data flow to load 2020 Payroll data from Azure DataLake Gen2 storage to SQL db table 
+![data-flow](../assets/data_flow_01.png)
 
-- Create a new data flow
-- Select the dataset for 2020 payroll file as the source
-- Click on the + icon at the bottom right of the source, from the options choose sink. A sink will get added in the dataflow
-- Select the sink dataset as 2020 payroll table created in SQL db
+2. Load 2021 Payroll Data to SQL DB transaction table
+![data-flow](../assets/data_flow_02.png)
 
-Repeat the same process to add data flow to load data for each file in Azure DataLake to the corresponding SQL DB tables.
+3. Create Pipeline to load 2021 Payroll data into the SQL DB
+![data-flow](../assets/data_flow_03.png)
+![data-flow](../assets/data_flow_04.png)
+
+4. Create data flows load data from data lake into SQL DB
+- Design data flows to load Employee, Title, and Agency files into their respective SQL pool tables on SQL DB.
+- For each data flow, ensure the data is directed to the corresponding SQL DB target table as the sink.
+![data-flow](../assets/data_flow_05.png)
+
+5. Create pipelines for Employee, Title, Agency to SQL DB containing the data flows
+![data-flow](../assets/data_flow_06.png)
+![data-flow](../assets/data_flow_07.png)
