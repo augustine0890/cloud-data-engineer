@@ -17,3 +17,4 @@
 5. Create pipelines for Employee, Title, Agency to SQL DB containing the data flows
 ![data-flow](../assets/data_flow_06.png)
 ![data-flow](../assets/data_flow_07.png)
+![data-flow](../assets/data_flow_08.png)
